@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated button</title>
+    <style>
+        .wrapper {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .button {
+            display: inline-block;
+            cursor: pointer;
+            background: red;
+            text-decoration: none;
+            border: 3px solid red;
+            border-radius: 4px;
+            color: white;
+            padding: 15px 25px;
+
+            position: relative;
+            isolation: isolate;
+            overflow: hidden; /*border-radius*/
+            transition: color 450ms;
+        }
+        
+        .button:hover {
+            color: black;
+        }
+
+        .button::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background: white;
+            inset: 0;
+            
+            scale: 0 1;
+            transform-origin: right;
+            transition: scale 450ms;
+        }
+
+        .button:hover::after {
+            scale: 1 1;
+            transform-origin: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <a href="#" class="button">Fake button</a>
+    </div>
+    
+</body>
+</html>
